@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VER AVENGERS: LOS VENGADORES ONLINE</title>
+
 <style>
 body{background:#0d0d0d;color:#fff;font-family:Poppins,sans-serif;margin:0}
 .container{max-width:900px;margin:auto;padding:16px}
@@ -17,13 +18,47 @@ iframe{width:100%;height:200px;border:none}
 .icon-item{display:flex;align-items:center;gap:6px}
 .icon-item svg{width:18px;height:18px;fill:#e50914}
 .synopsis{background:#111;border-radius:16px;padding:16px;margin-top:16px;color:#ccc;line-height:1.5}
+
+/* 🔥 BOTONES */
+.buttons{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+.buttons button{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:#1a1a1a;
+  color:#fff;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.buttons button:hover{
+  background:#e50914;
+}
+
+.buttons button.active{
+  background:#e50914;
+}
 </style>
 </head>
+
 <body>
 <div class="container">
 
 <div class="video-container">
-  <iframe src="https://moviesproxy.up.railway.app/play/aHR0cHM6Ly9tZWRpeGlydS5jb20vZS96dXRrOGYydXBob3Q" allowfullscreen></iframe>
+  <iframe id="player" allowfullscreen></iframe>
+</div>
+
+<!-- 🔥 BOTONES -->
+<div class="buttons">
+  <button class="active" onclick="cambiarVideo(this,'https://moviedays.top/7Ftk5F')">Servidor 1</button>
+  <button onclick="cambiarVideo(this,'https://moviesproxy.up.railway.app/play/aHR0cHM6Ly9oYW5lcml4LmNvbS9lL2d3cW1zMWNsc3RpdA')">Servidor 2</button>
+  <button class="active" onclick="cambiarVideo(this,'https://unlimplay.com/play/embed/movie/24428')">Servidor 3</button>
 </div>
 
 <div class="info-box">
@@ -58,8 +93,27 @@ iframe{width:100%;height:200px;border:none}
   </div>
 </div>
 
-<div class="synopsis">Cuando un enemigo inesperado surge como una gran amenaza para la seguridad mundial, Nick Fury, director de la Agencia SHIELD, decide reclutar a un equipo para salvar al mundo de un desastre casi seguro. Adaptación del cómic de Marvel "Los Vengadores", el legendario grupo de superhéroes formado por Ironman, Hulk, Thor y el Capitán América entre otros.</div>
+<div class="synopsis">
+Cuando un enemigo inesperado surge como una gran amenaza para la seguridad mundial, Nick Fury, director de la Agencia SHIELD, decide reclutar a un equipo para salvar al mundo de un desastre casi seguro. Adaptación del cómic de Marvel "Los Vengadores", el legendario grupo de superhéroes formado por Ironman, Hulk, Thor y el Capitán América entre otros.
+</div>
 
 </div>
+
+<!-- 🔥 SCRIPT FINAL -->
+<script>
+function cambiarVideo(btn, url){
+  document.getElementById("player").src = url;
+
+  document.querySelectorAll(".buttons button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+}
+
+/* 🔥 CARGA AUTOMÁTICA SERVIDOR 1 */
+window.onload = function(){
+  const btnDefault = document.querySelector(".buttons button");
+  cambiarVideo(btnDefault,'https://moviedays.top/7Ftk5F');
+}
+</script>
+
 </body>
 </html>
